@@ -18,20 +18,23 @@ router.get('/places', (req, res, next) => {
     .catch(error => console.log(error))
 });
 
+router.get('/coupon/:coupon', (req, res, next) => {
+  let { coupon } = req.params;
+  const url = `${process.env.CONFIRMATION_LINK}${coupon}`; 
+  const code = qr.image(url, { type: 'png', ec_level: 'H', size: 5, margin: 0 });
+  res.setHeader('Content-type', 'image/png');
+  code.pipe(res)
+});
+
 router.get('/:coupon', (req, res, next) => {
   let { coupon } = req.params;
+  const url = `${process.env.CONFIRMATION_LINK}coupon/${coupon}`; 
   User.findOneAndUpdate({generatedCoupon: {$eq: coupon }}, {$set: {redeemed: true}})
   .then(user => {
-    const url = `${process.env.CONFIRMATION_LINK}/${coupon}`; 
-    const code = qr.image(url, {type: 'svg'})
-    res.type('svg');
-    code.pipe(res)
-    console.log(res)
-    console.log(code)
     if (user.redeemed) {
-      res.render('coupon', { user })
+      res.render('coupon', { user, url })
     } else {
-      res.render('activate', { user })
+      res.render('activate', { user, url })
     }
   })
   .catch(err => console.log(err))
