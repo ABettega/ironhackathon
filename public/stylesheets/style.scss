@@ -6,13 +6,33 @@ h2{
   color:white;
 }
 
+
+
 *{
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   margin:0;
   color:#686868
 }
-
+footer{
+  display: flex;
+}
+.form-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+#form-container{
+  padding:40px;
+  width:80%;
+  border:1px solid #686868;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  margin: 40px 0;
+}
 .why-title{
   background:#686868;
   opacity: 0.55;
@@ -32,10 +52,18 @@ h2{
   width:100%;
 }
 
+
 #main-title-line1{
   font-family: 'Permanent Marker', cursive;
   color:white;
   z-index: 1;
+  letter-spacing: 1.8px;
+
+}
+
+.title-lines{
+  margin-left: 160px;
+  margin-bottom: 50px;
 }
 
 #main-title-line2{
@@ -78,7 +106,9 @@ button a{
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  padding-top:30px;
+  padding-top:60px;
+  padding-left: 50px;
+  padding-right: 50px;
   padding-bottom: 50px;
 }
 
@@ -88,6 +118,26 @@ body {
 
 a {
   color: #00B7FF;
+}
+
+.cool-image-slide{
+  width: 50%;
+  flex-shrink: 0;
+  height: 100%;
+  margin: 0 2px;
+  background-repeat:no-repeat;
+background-position: center;
+background-size:cover;
+}
+#img-1{
+background-image: url('../images/2_cool_image1_girlredhair.jpg');
+}
+
+#img-2{
+background-image: url('../images/beautiful-woman-on-the-beach-with-fresh-coconuts-PUK9DD6.jpg');
+}
+#img-3{
+background-image: url('../images/two-beautiful-sporty-surfer-girl-at-the-beach-9F4U3Q8_1.jpg');
 }
 
 #map{
@@ -159,7 +209,10 @@ a {
     font-family: 'Permanent Marker', cursive;
     text-align: center;
   }
-
+  .card-recipe{
+    width:80%;
+    border:1px solid black;
+  }
   .slider {
     width: 100%;
     display: flex;
@@ -180,9 +233,20 @@ a {
      background-image: url('../images/2_cool_image1_girlredhair.jpg');
      background-size: cover;
    }
+
+   .Elipse-2 {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    position: absolute;
+    top: 309px;
+    left: -200px;
+    background-image: linear-gradient(to bottom, #a0de2c, rgba(5, 245, 220, 0));
+}
    
 
 @media(max-width:768px){
+
   .title-lines{
     margin-left: 20px;
     margin-bottom: 22px;
@@ -228,31 +292,13 @@ a {
     display: flex;
     overflow-x: auto;
   }
-  .cool-image-slide{
-    width: 50%;
-    flex-shrink: 0;
-    height: 100%;
-    margin: 0 2px;
-    background-repeat:no-repeat;
-  background-position: center;
-  background-size:cover;
-  }
-#img-1{
-  background-image: url('../images/2_cool_image1_girlredhair.jpg');
-}
 
-#img-2{
-  background-image: url('../images/beautiful-woman-on-the-beach-with-fresh-coconuts-PUK9DD6.jpg');
-}
-#img-3{
-  background-image: url('../images/two-beautiful-sporty-surfer-girl-at-the-beach-9F4U3Q8_1.jpg');
-}
 
 
   .cool-image-slide img{
     object-fit: fill;
   }
-  
+
   .card-recipe{
     width: 50%;
     flex-shrink: 0;
@@ -271,6 +317,8 @@ a {
     background-color:red;
     margin: 0 2px;
   }
+
+ 
   
 }
 
