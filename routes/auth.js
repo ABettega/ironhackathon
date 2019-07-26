@@ -50,29 +50,29 @@ router.post("/signup", (req, res, next) => {
       redeemed: false
     });
 
-    // let transport = nodemailer.createTransport({
-    //   host: process.env.SMTP_SERVER,
-    //   port: process.env.SMTP_PORT,
-    //   auth: {
-    //     type: 'AUTH PLAIN',
-    //     user: process.env.SMTP_USER,
-    //     pass: process.env.SMTP_PASS
-    //   }
-    // });
-
     let transport = nodemailer.createTransport({
-      host: process.env.MAILTRAP_SERVER,
-      port: process.env.MAILTRAP_PORT,
+      host: process.env.SMTP_SERVER,
+      port: process.env.SMTP_PORT,
       auth: {
-        user: process.env.MAILTRAP_USER,
-        pass: process.env.MAILTRAP_PASS
+        type: 'AUTH PLAIN',
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
       }
     });
+
+    // let transport = nodemailer.createTransport({
+    //   host: process.env.MAILTRAP_SERVER,
+    //   port: process.env.MAILTRAP_PORT,
+    //   auth: {
+    //     user: process.env.MAILTRAP_USER,
+    //     pass: process.env.MAILTRAP_PASS
+    //   }
+    // });
 
     newUser.save()
     .then(() => {
       transport.sendMail({
-        from: '"Team Coconutz!" <coconutz@ironhackers.dev>',
+        from: '"Team Coconutz!" <coconutz@gin.ink>',
         to: email, 
         subject: `Here's the coupon you requested!`,
         text: `Click on ${process.env.CONFIRMATION_LINK}${newUser.generatedCoupon} to redeem your coupon!`,
