@@ -81,9 +81,6 @@ app.use('/auth', authRoutes);
 const authAdmin = require('./routes/admin');
 app.use('/admin', authAdmin);
 
-const cupom = require('./routes/cupom')
-app.use('/cupom', cupom);
-
 const dashboard = require('./routes/admin')
 app.use('/dashboard', dashboard);
 

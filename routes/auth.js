@@ -72,11 +72,57 @@ router.post("/signup", (req, res, next) => {
     newUser.save()
     .then(() => {
       transport.sendMail({
-        from: '"Equipe Coconutz!" <coconutz@ironhackers.dev>',
+        from: '"Team Coconutz!" <coconutz@ironhackers.dev>',
         to: email, 
-        subject: 'Tá aqui o cupom!',
-        text: `Acesse o link ${process.env.CONFIRMATION_LINK}${newUser.generatedCoupon} para confirmar sua conta!`,
-        html: `Acesse o link <b>${process.env.CONFIRMATION_LINK}${newUser.generatedCoupon}</b> para confirmar sua conta!`
+        subject: `Here's the coupon you requested!`,
+        text: `Click on ${process.env.CONFIRMATION_LINK}${newUser.generatedCoupon} to redeem your coupon!`,
+        html: `
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table style="font-family: arial, helvetica, sans-serif; padding: 100px; width: 100%; height:100vh; background:linear-gradient(180deg, rgba(200,199,50,1) 0%, rgba(159,226,232,1) 100%);; margin:0;">
+
+        <tr>
+            <td>
+        
+                <table align="center" class="lw-container" style="background-color: #fff; border-radius: 22px; border-collapse: collapse; margin: 0 auto; width: 630px;">
+                    <tr>
+                        <td style="text-align: center; width: 630px; padding: 10px; margin-top: 20px;">
+                                <img src="${process.env.CONFIRMATION_LINK}images/logo.svg" alt="logo" style="border: none; text-decoration: none; margin-top: 20px; height: 30px">
+                                <table cellpadding="30">
+                    <tr>
+                <td style="margin: 0 50px;">
+        
+                    <h3 style="text-align: center"><strong>Congrats ${newUser.name}</strong></h3>
+        
+                    <p style="font-family: arial, helvetica, sans-serif; font-size: 20px; text-align: center;">
+                        We are very happy that you chose Coconutz. Get to know one of our points of sale
+                        and get these discounts on all our Coconutz products!</p>
+        
+                    <p style="font-family: arial, helvetica, sans-serif; font-size: 13px; text-align: center;">
+                        This discount is non-transferable and will only apply to you. Enjoy!
+                    </p>
+        
+                    <br>
+                        <center style="font-family: arial, helvetica, sans-serif; font-size: 20px; text-align: center;">
+                            <a style="font-family: arial, helvetica, sans-serif; font-size: 20px; text-align: center; text-decoration: none; color: aqua;" href="${process.env.CONFIRMATION_LINK}${newUser.generatedCoupon}">
+                                <img style="padding: 10px; height: 20px;" alt="Redeem my coupom" src="${process.env.CONFIRMATION_LINK}images/symbol.png">
+                                <p>REDEEM MY COUPOM</p>
+                            </a>
+                        </center>   
+        
+                    </td>
+                </tr>
+            </table>
+            <p style="font-family: arial, helvetica, sans-serif; font-size: 10px;">Superfoods,Inc and Coconutz are trademarks.<br>You can stop receive this messages <strong>clicking here.</strong></strong></p>
+</body>
+</html>`
       })
       res.redirect("/");
     })
