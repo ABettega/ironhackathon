@@ -3,7 +3,6 @@ const Schema   = mongoose.Schema;
 
 const couponSchema = new Schema({
   generatedCoupon: {type: String, unique: true},
-  password: String,
   redeemed: Boolean,
 }, {
   timestamps: {

@@ -2,9 +2,11 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const userSchema = new Schema({
-  email: {type: String, unique: true},
+  name: String,
   password: String,
-  coupon: {type: mongoose.Schema.Types.ObjectId, ref: 'Coupon'},
+  email: {type: String, unique: true},
+  generatedCoupon: {type: String, unique: true},
+  redeemed: Boolean
 }, {
   timestamps: {
     createdAt: 'created_at',
