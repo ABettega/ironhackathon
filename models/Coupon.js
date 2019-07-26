@@ -1,12 +1,9 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
-const userSchema = new Schema({
-  name: String,
-  password: String,
-  email: {type: String, unique: true},
+const couponSchema = new Schema({
   generatedCoupon: {type: String, unique: true},
-  redeemed: Boolean
+  redeemed: Boolean,
 }, {
   timestamps: {
     createdAt: 'created_at',
@@ -14,5 +11,5 @@ const userSchema = new Schema({
   }
 });
 
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+const Coupon = mongoose.model('Coupon', couponSchema);
+module.exports = Coupon;
