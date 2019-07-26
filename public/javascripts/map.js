@@ -1,5 +1,5 @@
 const mapInit = () => {
-  const saoPaulo = { lat: -23.576947, lng: -46.635324 };
+  const saoPaulo = { lat: -23.5617375, lng: -46.6601331 };
 
   var styledMapType = new google.maps.StyledMapType(
     [
@@ -32,10 +32,8 @@ const mapInit = () => {
     }
   );
 
-
   map.mapTypes.set('styled_map', styledMapType);
   map.setMapTypeId('styled_map');
-
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -65,7 +63,7 @@ const mapInit = () => {
   }
 
   const getPlaces = () => {
-    axios.get("/map/places")
+    axios.get("/places")
       .then(response => {
         placePlaces(response.data.stores);
       })
@@ -73,7 +71,6 @@ const mapInit = () => {
         console.log(error);
       })
   }
-
 
   const placePlaces = stores => {
     stores.forEach(store => {
@@ -96,15 +93,6 @@ const mapInit = () => {
         content: contentString
       });
 
-      // function toggleBounce() {
-      //   if (pin.getAnimation() !== null) {
-      //    pin.setAnimation(null);
-      //   } else {
-      //    pin.setAnimation(google.maps.Animation.BOUNCE);
-      //   }
-      // }
-     
-
       const pin = new google.maps.Marker({
         position: center,
         map: map,
@@ -115,25 +103,19 @@ const mapInit = () => {
 
       pin.addListener('mouseover', function () {
         infowindow.open(map, pin);
-        // toggleBounce();
       });
 
       pin.addListener('mouseout', function () {
         infowindow.close(map, pin);
       });
 
-
     })
       .catch((error) => console.log(error))
     const list = document.getElementById('list')
     list.innerHTML += `<li><a href='/event/${event._id}'>${event.name}</a></li>`
   }
-
-
-
   getPlaces()
 }
-
 
 mapInit()
 

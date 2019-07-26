@@ -145,3 +145,32 @@
   </div>
   <button><a>Link</a></button>
 </section>
+  <br><br>
+
+  <form action="/auth/signup" method="POST" id="form-container">	
+    <label for="name">Name</label>
+    <input id="name" type="text" name="name" placeholder="e.g.: John Doe">
+
+    <br><br>
+
+    <label for="email">Email</label>
+    <input id="email" type="text" name="email" placeholder="example@address.com">
+
+    <br><br>
+
+    {{#if message }}
+      <div class="error-message">{{ message }}</div>
+    {{/if}}
+
+    <button>Create account</button>
+
+    <p class="account-message">
+      Do you already have an account?
+      <a href="/auth/login">Login</a>
+    </p>
+  </form>
+<div id="map"></div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_API_KEY}}"></script>
+<script type="text/javascript" src="/javascripts/map.js"></script>
+</main>

@@ -81,9 +81,6 @@ app.use('/auth', authRoutes);
 const authAdmin = require('./routes/admin');
 app.use('/admin', authAdmin);
 
-const map = require('./routes/map')
-app.use('/map', map);
-
 const cupom = require('./routes/cupom')
 app.use('/cupom', cupom);
 
