@@ -15,7 +15,7 @@ const flash      = require("connect-flash");
 
 
 mongoose
-  .connect('mongodb://localhost/ironhackathon', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -58,11 +58,9 @@ hbs.registerHelper('ifUndefined', (value, options) => {
       return options.fn(this);
   }
 });
-  
 
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
-
 
 // Enable authentication using session + passport
 app.use(session({
@@ -73,7 +71,6 @@ app.use(session({
 }))
 app.use(flash());
 require('./passport')(app);
-    
 
 const index = require('./routes/index');
 app.use('/', index);
@@ -86,7 +83,5 @@ app.use('/map', map);
 
 const cupom = require('./routes/cupom')
 app.use('/cupom', cupom);
-
-
 
 module.exports = app;

@@ -2,8 +2,12 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const userSchema = new Schema({
-  username: String,
-  password: String
+  name: String,
+  lastName: String,
+  password: String,
+  email: {type: String, unique: true},
+  generatedCoupon: {type: String, unique: true},
+  redeemed: Boolean
 }, {
   timestamps: {
     createdAt: 'created_at',
