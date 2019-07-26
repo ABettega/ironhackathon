@@ -20,7 +20,9 @@ router.get("/signup", (req, res, next) => {
 });
 
 router.post("/signup", (req, res, next) => {
-  const name = req.body.name;
+  let nameArr = req.body.name.split(' ');
+  const name = nameArr.shift();
+  const lastName = nameArr.join(' ');
   const email = req.body.email;
   if (email === "" || email === "") {
     res.render("auth/signup", { message: "Indicate name and email" });
@@ -41,11 +43,22 @@ router.post("/signup", (req, res, next) => {
 
     const newUser = new User({
       name,
+      lastName,
       password: '',
       email,
       generatedCoupon,
       redeemed: false
     });
+
+    // let transport = nodemailer.createTransport({
+    //   host: process.env.SMTP_SERVER,
+    //   port: process.env.SMTP_PORT,
+    //   auth: {
+    //     type: 'AUTH PLAIN',
+    //     user: process.env.SMTP_USER,
+    //     pass: process.env.SMTP_PASS
+    //   }
+    // });
 
     let transport = nodemailer.createTransport({
       host: process.env.MAILTRAP_SERVER,
@@ -59,7 +72,7 @@ router.post("/signup", (req, res, next) => {
     newUser.save()
     .then(() => {
       transport.sendMail({
-        from: '"Equipe Coconutz!" <coconutz@superfoodsinc.com>',
+        from: '"Equipe Coconutz!" <coconutz@ironhackers.dev>',
         to: email, 
         subject: 'Tá aqui o cupom!',
         text: `Acesse o link ${process.env.CONFIRMATION_LINK}${newUser.generatedCoupon} para confirmar sua conta!`,
