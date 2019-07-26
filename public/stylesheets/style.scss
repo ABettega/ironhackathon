@@ -1,8 +1,85 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap');
-
-h1,h2,p{
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap');
+h2{
   font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
+  font-weight: 500;
+  color:white;
+}
+
+*{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  margin:0;
+  color:#686868
+}
+
+.why-title{
+  background:#686868;
+  opacity: 0.55;
+  width:100%;
+  padding:4px 0;
+}
+
+.beauty-title{
+  background:#FF8D61;
+  width:100%;
+  padding:4px 0;
+}
+
+.cool-title{
+  background:#05f5dc;
+  padding:4px 0;
+  width:100%;
+}
+
+#main-title-line1{
+  font-family: 'Permanent Marker', cursive;
+  color:white;
+  z-index: 1;
+}
+
+#main-title-line2{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color:white;
+  z-index: 1;
+}
+
+button{
+  border-radius: 36px;
+  width: 75%;
+  padding: 10px 0;
+  border:none;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+}
+
+
+button a{
+  color:white;
+  text-decoration: none;
+  font-size:16px;
+  font-weight: 500;
+}
+
+.blue-button{
+  background-color: #05f5dc;
+}
+.header-image{
+  background-image: url('../images/header_girl_drinking_coconut.jpg');
+  background-size:cover;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.header-text{
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-top:30px;
+  padding-bottom: 50px;
 }
 
 body {
@@ -18,7 +95,116 @@ a {
     width: 100%;
 }
 
+  
+  ::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #aaa; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+  h1{
+    font-size: 63px
+  }
+
+  h2{
+    font-size: 38px;
+    text-align:center;
+  }
+
+  h3{
+    font-size: 30px
+  }
+  
+  p{ 
+    font-size:24px;
+  }
+
+  .div-why{
+    display: flex;
+    width:100%;
+    height: 400px;
+  }
+  
+  .why-card{
+    width:30%;
+    background: red;
+  }
+
+  .why-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .why-section button{
+    width:50px;
+  }
+
+  .what-they-talk{
+    padding: 10px 0;
+    color:#05f5dc;
+    font-family: 'Permanent Marker', cursive;
+    text-align: center;
+  }
+
+  .slider {
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+  }
+
+  .Elipse-2 {
+    width: 162px;
+    height: 163px;
+    border-radius: 50%;
+    position: absolute;
+    top: 209px;
+    left: -38px;
+    background-image: linear-gradient(to bottom, #a0de2c, rgba(5, 245, 220, 0));
+   }
+
+   .slider-image{
+     background-image: url('../images/2_cool_image1_girlredhair.jpg');
+     background-size: cover;
+   }
+   
+
 @media(max-width:768px){
+  .title-lines{
+    margin-left: 20px;
+    margin-bottom: 22px;
+  }
+
+  .header-image{
+    background-image: url('../images/header_girl_drinking_coconut.jpg');
+    background-size:cover;
+    height: 30vh;
+  }
+
+  #main-title-line1{
+    font-size: 36px;
+    line-height: 0.56;
+    letter-spacing: 1.8px;
+  }
+
+  #main-title-line2{
+    font-size: 24px;
+    letter-spacing: 9.6px;
+  }
+
   h1{
     font-size: 42px
   }
@@ -34,6 +220,7 @@ a {
   
   p{ 
     font-size:16px;
+    line-height: 1.5;
   }
   .slider {
     width: 100%;
@@ -41,18 +228,35 @@ a {
     display: flex;
     overflow-x: auto;
   }
-  .cool-image-slide {
+  .cool-image-slide{
     width: 50%;
     flex-shrink: 0;
     height: 100%;
-    background-color:red;
     margin: 0 2px;
+    background-repeat:no-repeat;
+  background-position: center;
+  background-size:cover;
+  }
+#img-1{
+  background-image: url('../images/2_cool_image1_girlredhair.jpg');
+}
+
+#img-2{
+  background-image: url('../images/beautiful-woman-on-the-beach-with-fresh-coconuts-PUK9DD6.jpg');
+}
+#img-3{
+  background-image: url('../images/two-beautiful-sporty-surfer-girl-at-the-beach-9F4U3Q8_1.jpg');
+}
+
+
+  .cool-image-slide img{
+    object-fit: fill;
   }
   
   .card-recipe{
     width: 50%;
     flex-shrink: 0;
-    height: 300px;
+    height: 100%;
   }
 
   .principal-card-beauty{
@@ -67,22 +271,6 @@ a {
     background-color:red;
     margin: 0 2px;
   }
-  .div-why{
-    display: flex;
-  }
   
-  .why-card{
-    width:30%;
-  }
-
-  .why-section{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .why-section button{
-    width:50px;
-  }
 }
 
