@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +8,53 @@
   <title>{{title}}</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
+
 <body>
 
-  <nav>
-    <a href="/">Home</a>
-    <a href="/auth/login">Login</a>
-    <a href="/auth/signup">Signup</a>
-    <a href="/auth/logout">Logout</a>
+  {{!-- Nav bar --}}
+  <nav id="navbar">
+    <div class="logo-nav">
+      <img src="#" alt="logo on navbar">
+    </div>
+    <div class="menu">
+      <a href="/cool">Cool</a>
+      <a href="/beauty">Beauty</a>
+      <a href="/eazy">Eazy</a>
+      <a href="/find">Find</a>
+    </div>
+    <div class="cta1">
+      <a href="#">Buy</a>
+    </div>
   </nav>
+  {{!-- Nav bar end --}}
 
-  {{{body}}}
+  {{{body}}}{{!-- this is our hole body --}}
+
+  {{!-- Footer-- with login to admin --}}
+  <footer>
+    <div class="logo-footer">Logo</div>
+
+    {{!-- corporate menu --}}
+    <div class="corporate-menu">
+      <div class="menu-products">
+        <a href="/cool">Cool</a>
+        <a href="/beauty">Beauty</a>
+        <a href="/eazy">Eazy</a>
+        <a href="/find">Find</a>
+      </div>
+      <div class="menu-about">
+        <a href="/about">About</a>
+        <a href="/moreproducts">All your products</a>
+        <a href="/contact">Contact</a>
+
+      </div>
+
+    </div>
+
+  </footer>
+  {{!-- Footer-end --}}
 
   <script src="/javascripts/script.js"></script>
 </body>
+
 </html>

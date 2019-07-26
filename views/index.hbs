@@ -1,25 +1,14 @@
-<h2>Signup</h2>
+<main class="header">
 
-<form action="/auth/signup" method="POST" id="form-container">
+  <div class="main-title">
+    <h1>Super Title</h1>
+  </div>
 
-  <label for="name">Name</label>
-  <input id="name" type="text" name="name" placeholder="e.g.: John Doe">
+  <div class="header-text">
+    <article>
+      <p>A convincent text talking about this fruit</h3>
+    </article>
+    <a class="cta-header" href="#">Call to action</a>
+  </div>
 
-  <br><br>
-
-  <label for="email">Email</label>
-  <input id="email" type="text" name="email" placeholder="example@address.com">
-
-  <br><br>
-
-  {{#if message }}
-    <div class="error-message">{{ message }}</div>
-  {{/if}}
-
-  <button>Create account</button>
-
-  <p class="account-message">
-    Do you already have an account?
-    <a href="/auth/login">Login</a>
-  </p>
-</form>
+</main>
