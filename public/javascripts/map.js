@@ -82,29 +82,44 @@ const mapInit = () => {
         lng: store.longitude
       };
 
-      var contentString = '<div id="content">' +
-        '<div id="siteNotice">' +
+      let contentString = '<div id="content">' +
+        
         '</div>' +
         `<h1 id="firstHeading" class="firstHeading">Loja ${store.street}</h1>` +
         '<div id="bodyContent">' +
         '<p><b>Uluru</b>, ' +
         'sandstone rock ' +
-        '</div>' +
+        
         '</div>';
 
-      var infowindow = new google.maps.InfoWindow({
+      let infowindow = new google.maps.InfoWindow({
         content: contentString
       });
 
+      // function toggleBounce() {
+      //   if (pin.getAnimation() !== null) {
+      //    pin.setAnimation(null);
+      //   } else {
+      //    pin.setAnimation(google.maps.Animation.BOUNCE);
+      //   }
+      // }
+     
 
       const pin = new google.maps.Marker({
         position: center,
         map: map,
-        title: store.street
+        title: store.street,
+        animation: google.maps.Animation.DROP
+      });
+      
+
+      pin.addListener('mouseover', function () {
+        infowindow.open(map, pin);
+        // toggleBounce();
       });
 
-      pin.addListener('click', function () {
-        infowindow.open(map, pin);
+      pin.addListener('mouseout', function () {
+        infowindow.close(map, pin);
       });
 
 
