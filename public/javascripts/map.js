@@ -32,10 +32,8 @@ const mapInit = () => {
     }
   );
 
-
   map.mapTypes.set('styled_map', styledMapType);
   map.setMapTypeId('styled_map');
-
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -65,7 +63,7 @@ const mapInit = () => {
   }
 
   const getPlaces = () => {
-    axios.get("/map/places")
+    axios.get("/places")
       .then(response => {
         placePlaces(response.data.stores);
       })
@@ -73,7 +71,6 @@ const mapInit = () => {
         console.log(error);
       })
   }
-
 
   const placePlaces = stores => {
     stores.forEach(store => {
@@ -128,12 +125,8 @@ const mapInit = () => {
     const list = document.getElementById('list')
     list.innerHTML += `<li><a href='/event/${event._id}'>${event.name}</a></li>`
   }
-
-
-
   getPlaces()
 }
-
 
 mapInit()
 
