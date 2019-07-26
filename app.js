@@ -87,4 +87,7 @@ app.use('/map', map);
 const cupom = require('./routes/cupom')
 app.use('/cupom', cupom);
 
+const dashboard = require('./routes/admin')
+app.use('/dashboard', dashboard);
+
 module.exports = app;
